@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="UTF-8"><title>Daftar</title><link rel="stylesheet" href="style.css"></head>
+<body><h2>Daftar</h2><form id="registerForm"><input type="email" placeholder="Email" required id="email"><br>
+<input type="password" placeholder="Password" required id="password"><br><button type="submit">Daftar</button></form>
+<script>
+document.getElementById("registerForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const email = email.value, password = password.value;
+  const res = await fetch('/api/auth/register', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, password })
+  });
+  if (res.ok) {
+    alert("Berhasil daftar! Silakan login.");
+    window.location.href = "login.html";
+  } else { alert("Gagal daftar"); }
+});
+</script></body></html>
